@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: HealthPoint
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2519801344676702774, guid: a2ccc186372fe674c8a9624dba3ae1d2, type: 3}
+      propertyPath: RewardMoney
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3421937613999454771, guid: a2ccc186372fe674c8a9624dba3ae1d2, type: 3}
       propertyPath: m_Name
       value: Orc Blue

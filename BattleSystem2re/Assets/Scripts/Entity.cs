@@ -11,21 +11,24 @@ public class Entity : MonoBehaviour
     // AttackPower 외부에서 사용할 수 있게 만들어야 합니다.
 
     [SerializeField] private int HealthPoint;
+    [SerializeField] private int MaxHealthPoint;
     [SerializeField] private int AttackPower;
-    [SerializeField]  Animator animator;
+    [SerializeField] Animator animator;
 
     bool IsDeath;
     public bool IsEnemy; // 적인지 아닌지 구분하기 위한 변수
-
     public bool CheckIsDeath() => IsDeath;
     public int GetHP() =>  HealthPoint; //아래와 같음.
-    public void SetHP(int value) => HealthPoint = value; 
+    public int GetMaxHP() => MaxHealthPoint;
     public int GetAttackPower() { return AttackPower; }
+    public void SetHP(int value) => HealthPoint = value; 
+    public void SetMaxHP(int value) => MaxHealthPoint = value;
     public void SetAttackPower(int value) { AttackPower = value; }
 
     private void Start()
     {
-        IsDeath = false;
+        IsDeath = false;       
+        HealthPoint = MaxHealthPoint;
     }
     public void Damage(Entity attacker)
     {
@@ -49,14 +52,12 @@ public class Entity : MonoBehaviour
             enemyMove.KnockBack();
         }
 
-        if (HealthPoint <= 0)
-        {
-            Dead();
-        }
+        if (HealthPoint <= 0){ Dead(); }
     }
 
     protected virtual void Dead()
-    { 
+    {
+        IsDeath = true;
         animator.SetTrigger("Death");
         //Destroy(gameObject);
     }
