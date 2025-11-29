@@ -1,6 +1,5 @@
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
-
 public class Enemy : Entity
 {
     Move move;
@@ -8,8 +7,9 @@ public class Enemy : Entity
     public int RewardMoney = 10;
     [SerializeField] Player player;
 
-    private void Start()
+    protected virtual void Start()
     {
+        base.Start();
         player = Object.FindFirstObjectByType<Player>() ;
     }
 
